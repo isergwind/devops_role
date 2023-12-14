@@ -1,0 +1,17 @@
+---
+# tasks file for devops
+- name: Create user and directory
+  user:
+    name: "{{ devops_user }}"
+    comment: DevOps use
+    uid: "{{ devops_user_uid }}"
+    createhome: yes
+    state: present
+  become: yes
+
+- name: Copy SSH key for user
+  authorized_key:
+    user: "{{ devops_user }}"
+    state: present
+    key: "{{ lookup('file', devops_ssh_key_path) }}"
+  become: yes

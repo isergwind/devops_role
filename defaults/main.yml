@@ -1,0 +1,5 @@
+---
+# default file for devops
+devops_user: user
+devops_ssh_key_path: /root/ansible/ansible/devops/files/ed25519.pub 
+devops_user_uid: "{{ 1600 | random(start=1200) }}"
